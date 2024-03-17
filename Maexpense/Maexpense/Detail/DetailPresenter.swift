@@ -31,6 +31,10 @@ final class DetailPresenter {
 // MARK: - Extensions -
 
 extension DetailPresenter: DetailPresenterInterface {
+    func handleBackTapped() {
+        wireframe.goBack()
+    }
+    
     func presentDetailPortofolio() {
         view.displayMonthData(data: monthData)
     }

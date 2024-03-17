@@ -10,7 +10,14 @@
 import UIKit
 
 final class DetailViewController: UIViewController {
+    
+    var transactionList: [MonthDetailDatum] = []
 
+    @IBOutlet weak var lb_expesetype: UILabel!
+    @IBOutlet weak var lb_percentage: UILabel!
+    @IBOutlet weak var lb_totalexpense: UILabel!
+    @IBOutlet weak var cv_transactionlist: UICollectionView!
+    
     // MARK: - Public properties -
 
     var presenter: DetailPresenterInterface!
@@ -19,16 +26,50 @@ final class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupCV()
         presenter.presentDetailPortofolio()
     }
 
+    @IBAction func backTapped(_ sender: Any) {
+        presenter.handleBackTapped()
+    }
 }
 
 // MARK: - Extensions -
 
 extension DetailViewController: DetailViewInterface {
     func displayMonthData(data: MonthPortoDatum) {
-        
+        lb_expesetype.text = data.label
+        lb_percentage.text = (data.percentage ?? "0") + "%"
+        let totalexpense = data.data?.reduce(0) { $0 + ($1.nominal ?? 0) }
+        lb_totalexpense.text = MoneyUtils.toRupiah(totalexpense ?? 0)
+        transactionList = data.data ?? []
+        cv_transactionlist.reloadData()
     }
     
 }
+
+extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func setupCV(){
+        cv_transactionlist.delegate = self
+        cv_transactionlist.dataSource = self
+        cv_transactionlist.register(UINib(nibName: String(describing: TransactionCell.self), bundle: nil), forCellWithReuseIdentifier: TransactionCell.identifier)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return transactionList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let transaction = transactionList[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TransactionCell.identifier, for: indexPath) as! TransactionCell
+        cell.lb_nominal.text = MoneyUtils.toRupiah(transaction.nominal ?? 0)
+        cell.lb_date.text = transaction.trxDate
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width-40, height: 51)
+    }
+}
+

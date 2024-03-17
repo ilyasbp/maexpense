@@ -13,7 +13,7 @@ import DGCharts
 final class ExpenseViewController: UIViewController {
 
     @IBOutlet weak var pcv_monthly: PieChartView!
-    @IBOutlet weak var lcv_annualy: LineChartView!
+    @IBOutlet weak var lcv_annually: LineChartView!
     // MARK: - Public properties -
 
     var presenter: ExpensePresenterInterface!
@@ -83,27 +83,27 @@ extension ExpenseViewController: ExpenseViewInterface, ChartViewDelegate {
         
         // X AXIS
         let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-        lcv_annualy.xAxis.valueFormatter = IndexAxisValueFormatter(values: months)
-        lcv_annualy.xAxis.granularity = 1
-        lcv_annualy.xAxis.labelCount = months.count
-        lcv_annualy.xAxis.labelPosition = .bottom
-        lcv_annualy.xAxis.drawGridLinesEnabled = false
-        lcv_annualy.xAxis.avoidFirstLastClippingEnabled = false
-        lcv_annualy.xAxis.axisMinimum = -0.4 // Adjust the value to set the desired spacing for the first label
-        lcv_annualy.xAxis.axisMaximum = Double(data.count - 1) + 0.4
+        lcv_annually.xAxis.valueFormatter = IndexAxisValueFormatter(values: months)
+        lcv_annually.xAxis.granularity = 1
+        lcv_annually.xAxis.labelCount = months.count
+        lcv_annually.xAxis.labelPosition = .bottom
+        lcv_annually.xAxis.drawGridLinesEnabled = false
+        lcv_annually.xAxis.avoidFirstLastClippingEnabled = false
+        lcv_annually.xAxis.axisMinimum = -0.4 // Adjust the value to set the desired spacing for the first label
+        lcv_annually.xAxis.axisMaximum = Double(data.count - 1) + 0.4
         
         
         // LEFT AXIS
-        lcv_annualy.leftAxis.valueFormatter = DefaultAxisValueFormatter(decimals: 0)
+        lcv_annually.leftAxis.valueFormatter = DefaultAxisValueFormatter(decimals: 0)
         
         // RIGHT AXIS
-        lcv_annualy.rightAxis.valueFormatter = DefaultAxisValueFormatter(decimals: 0)
-        lcv_annualy.rightAxis.drawAxisLineEnabled = false
-        lcv_annualy.rightAxis.drawLabelsEnabled = false
+        lcv_annually.rightAxis.valueFormatter = DefaultAxisValueFormatter(decimals: 0)
+        lcv_annually.rightAxis.drawAxisLineEnabled = false
+        lcv_annually.rightAxis.drawLabelsEnabled = false
         
-        lcv_annualy.legend.enabled = false
+        lcv_annually.legend.enabled = false
 
-        lcv_annualy.data = chartData
+        lcv_annually.data = chartData
     }
     
 }

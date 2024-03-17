@@ -4,16 +4,24 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <array key="Poppins-SemiBold.ttf">
             <string>Poppins-SemiBold</string>
         </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="Maexpense" customModuleProvider="target">
             <connections>
+                <outlet property="cv_transactionlist" destination="zKz-JM-3iz" id="cTR-ed-pq7"/>
+                <outlet property="lb_expesetype" destination="AJV-sr-5bv" id="2vL-4Z-PKo"/>
+                <outlet property="lb_percentage" destination="CHp-A3-QEg" id="6MO-Fo-kbz"/>
+                <outlet property="lb_totalexpense" destination="LZh-QC-fKD" id="FeS-ZF-oRb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,34 +31,107 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qsf-KU-6n0">
-                    <rect key="frame" x="0.0" y="0.0" width="393" height="120"/>
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="110"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8QO-Qs-z9t">
-                            <rect key="frame" x="51.666666666666664" y="85.333333333333329" width="112.33333333333334" height="19.666666666666671"/>
+                            <rect key="frame" x="51.666666666666664" y="75.333333333333329" width="112.33333333333334" height="19.666666666666671"/>
                             <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vX0-kr-kyV">
-                            <rect key="frame" x="20" y="84" width="19.666666666666671" height="22"/>
+                            <rect key="frame" x="20" y="74" width="19.666666666666671" height="22"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" image="arrow.left" catalog="system"/>
+                            <connections>
+                                <action selector="backTapped:" destination="-1" eventType="touchUpInside" id="QKy-7e-aXr"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" name="darkblue"/>
                     <constraints>
                         <constraint firstItem="vX0-kr-kyV" firstAttribute="leading" secondItem="Qsf-KU-6n0" secondAttribute="leading" constant="20" id="DmJ-cU-p3s"/>
                         <constraint firstAttribute="bottom" secondItem="vX0-kr-kyV" secondAttribute="bottom" constant="14" id="gol-tq-kGy"/>
+                        <constraint firstAttribute="height" constant="110" id="jYI-hd-RSj"/>
                         <constraint firstItem="8QO-Qs-z9t" firstAttribute="centerY" secondItem="vX0-kr-kyV" secondAttribute="centerY" id="o5g-Lq-xas"/>
-                        <constraint firstAttribute="height" constant="120" id="v5u-Nk-YSt"/>
                         <constraint firstItem="8QO-Qs-z9t" firstAttribute="leading" secondItem="vX0-kr-kyV" secondAttribute="trailing" constant="12" id="x7G-Kd-58N"/>
                     </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expense Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wgv-3b-7xx">
+                    <rect key="frame" x="20" y="130" width="73.333333333333329" height="14.333333333333343"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                    <color key="textColor" name="silverblue"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tarik Tunai" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJV-sr-5bv">
+                    <rect key="frame" x="20" y="144.33333333333334" width="90" height="22.666666666666657"/>
+                    <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                    <color key="textColor" name="darkblue"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Percentage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbL-7R-XvT">
+                    <rect key="frame" x="19.999999999999996" y="179" width="60.666666666666657" height="14.333333333333343"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                    <color key="textColor" name="silverblue"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHp-A3-QEg">
+                    <rect key="frame" x="20" y="193.33333333333334" width="34" height="22.666666666666657"/>
+                    <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                    <color key="textColor" name="darkblue"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="zKz-JM-3iz">
+                    <rect key="frame" x="0.0" y="293.33333333333331" width="393" height="558.66666666666674"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="b7D-Hy-PXv">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4NO-MG-DFG">
+                    <rect key="frame" x="20" y="277" width="85.666666666666671" height="14.333333333333314"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                    <color key="textColor" name="silverblue"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Expense" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cva-Es-uAb">
+                    <rect key="frame" x="20" y="228" width="75" height="14.333333333333343"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                    <color key="textColor" name="silverblue"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZh-QC-fKD">
+                    <rect key="frame" x="20" y="242.33333333333334" width="34" height="22.666666666666657"/>
+                    <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                    <color key="textColor" name="darkblue"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="AJV-sr-5bv" firstAttribute="leading" secondItem="Wgv-3b-7xx" secondAttribute="leading" id="1n3-dy-YpM"/>
+                <constraint firstItem="Cva-Es-uAb" firstAttribute="top" secondItem="CHp-A3-QEg" secondAttribute="bottom" constant="12" id="2yr-gc-jIi"/>
+                <constraint firstItem="CHp-A3-QEg" firstAttribute="leading" secondItem="xbL-7R-XvT" secondAttribute="leading" id="AbU-yk-aQu"/>
+                <constraint firstAttribute="bottom" secondItem="zKz-JM-3iz" secondAttribute="bottom" id="BdA-KE-0AN"/>
                 <constraint firstAttribute="trailing" secondItem="Qsf-KU-6n0" secondAttribute="trailing" id="ICh-XE-Aea"/>
+                <constraint firstAttribute="trailing" secondItem="zKz-JM-3iz" secondAttribute="trailing" id="Jb9-lE-bGa"/>
+                <constraint firstItem="CHp-A3-QEg" firstAttribute="top" secondItem="xbL-7R-XvT" secondAttribute="bottom" id="JkM-vJ-gLn"/>
+                <constraint firstItem="xbL-7R-XvT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="Lm6-Yl-8dQ"/>
+                <constraint firstItem="Cva-Es-uAb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="MKt-Fv-i9U"/>
+                <constraint firstItem="Wgv-3b-7xx" firstAttribute="top" secondItem="Qsf-KU-6n0" secondAttribute="bottom" constant="20" id="Nda-U6-lKD"/>
+                <constraint firstItem="zKz-JM-3iz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="S0g-Ll-c4h"/>
+                <constraint firstItem="Wgv-3b-7xx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="aop-iq-FIj"/>
+                <constraint firstItem="LZh-QC-fKD" firstAttribute="top" secondItem="Cva-Es-uAb" secondAttribute="bottom" id="btZ-4o-rUJ"/>
+                <constraint firstItem="4NO-MG-DFG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="jFL-dR-6Um"/>
+                <constraint firstItem="zKz-JM-3iz" firstAttribute="top" secondItem="4NO-MG-DFG" secondAttribute="bottom" constant="2" id="nuC-uB-pEf"/>
+                <constraint firstItem="xbL-7R-XvT" firstAttribute="top" secondItem="AJV-sr-5bv" secondAttribute="bottom" constant="12" id="ow1-U7-C03"/>
+                <constraint firstItem="LZh-QC-fKD" firstAttribute="leading" secondItem="Cva-Es-uAb" secondAttribute="leading" id="oxw-gL-AMy"/>
+                <constraint firstItem="AJV-sr-5bv" firstAttribute="top" secondItem="Wgv-3b-7xx" secondAttribute="bottom" id="ql2-Kv-MlF"/>
+                <constraint firstItem="4NO-MG-DFG" firstAttribute="top" secondItem="LZh-QC-fKD" secondAttribute="bottom" constant="12" id="tbq-Ph-htk"/>
                 <constraint firstItem="Qsf-KU-6n0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xJo-IR-NXO"/>
                 <constraint firstItem="Qsf-KU-6n0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="xzQ-YT-Bch"/>
             </constraints>
@@ -62,5 +143,11 @@
         <namedColor name="darkblue">
             <color red="0.082352941176470587" green="0.29803921568627451" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="silverblue">
+            <color red="0.22352941176470589" green="0.43137254901960786" blue="0.54509803921568623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

@@ -10,6 +10,7 @@
 import UIKit
 
 protocol DetailWireframeInterface: WireframeInterface {
+    func goBack()
 }
 
 protocol DetailViewInterface: ViewInterface {
@@ -18,6 +19,7 @@ protocol DetailViewInterface: ViewInterface {
 
 protocol DetailPresenterInterface: PresenterInterface {
     func presentDetailPortofolio()
+    func handleBackTapped()
 }
 
 protocol DetailInteractorInterface: InteractorInterface {

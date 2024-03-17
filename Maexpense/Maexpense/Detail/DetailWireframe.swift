@@ -27,4 +27,8 @@ final class DetailWireframe: BaseWireframe<DetailViewController> {
 // MARK: - Extensions -
 
 extension DetailWireframe: DetailWireframeInterface {
+    func goBack() {
+        navigationController?.popViewController(animated: true)
+    }
+    
 }
