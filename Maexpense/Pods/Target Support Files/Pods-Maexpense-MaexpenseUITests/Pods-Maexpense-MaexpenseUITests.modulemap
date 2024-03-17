@@ -1,0 +1,6 @@
+framework module Pods_Maexpense_MaexpenseUITests {
+  umbrella header "Pods-Maexpense-MaexpenseUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
