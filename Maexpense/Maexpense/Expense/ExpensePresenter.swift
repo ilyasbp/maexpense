@@ -16,6 +16,7 @@ final class ExpensePresenter {
     private unowned let view: ExpenseViewInterface
     private let interactor: ExpenseInteractorInterface
     private let wireframe: ExpenseWireframeInterface
+    private var monthPortofolio: [MonthPortoDatum] = []
 
     // MARK: - Lifecycle -
 
@@ -29,4 +30,16 @@ final class ExpensePresenter {
 // MARK: - Extensions -
 
 extension ExpensePresenter: ExpensePresenterInterface {
+    func handleChartSelection(index: Int) {
+        wireframe.goToDetail(data: monthPortofolio[index])
+    }
+    
+    func presentPortofolio() {
+        interactor.fetchPortofolio(){ [weak self] portofolio in
+            guard let self = self else { return }
+            self.view.displayDonutChart(data: portofolio.monthPorto?.data ?? [])
+            self.view.displayLineChart(data: portofolio.yearPorto?.data?.month ?? [])
+            self.monthPortofolio = portofolio.monthPorto?.data ?? []
+        }
+    }
 }

@@ -6,16 +6,15 @@ target 'Maexpense' do
   use_frameworks!
 
   # Pods for Maexpense
+  pod 'DGCharts'
 
   target 'MaexpenseTests' do
     inherit! :search_paths
     # Pods for testing
-pod 'DGCharts'
   end
 
   target 'MaexpenseUITests' do
     # Pods for testing
-pod 'DGCharts'
   end
 
 end

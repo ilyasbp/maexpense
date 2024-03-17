@@ -27,4 +27,8 @@ final class ExpenseWireframe: BaseWireframe<ExpenseViewController> {
 // MARK: - Extensions -
 
 extension ExpenseWireframe: ExpenseWireframeInterface {
+    func goToDetail(data: MonthPortoDatum) {
+        navigationController?.pushWireframe(DetailWireframe(monthData: data))
+    }
+    
 }

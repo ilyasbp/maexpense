@@ -15,4 +15,16 @@ final class ExpenseInteractor {
 // MARK: - Extensions -
 
 extension ExpenseInteractor: ExpenseInteractorInterface {
+    func fetchPortofolio(completion: @escaping (Portofolio) -> Void) {
+        if let jsonUrl = Bundle.main.url(forResource: "userPortofolio", withExtension: "json"),
+           let jsonData = try? Data(contentsOf: jsonUrl) {
+            do {
+                let portofolio = try JSONDecoder().decode(Portofolio.self, from: jsonData)
+                completion(portofolio)
+            }
+            catch {
+                print("Error decoding JSON:", error)
+            }
+        }
+    }
 }

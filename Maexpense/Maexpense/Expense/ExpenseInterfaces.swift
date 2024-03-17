@@ -10,13 +10,19 @@
 import UIKit
 
 protocol ExpenseWireframeInterface: WireframeInterface {
+    func goToDetail(data: MonthPortoDatum)
 }
 
 protocol ExpenseViewInterface: ViewInterface {
+    func displayDonutChart(data: [MonthPortoDatum])
+    func displayLineChart(data: [Int])
 }
 
 protocol ExpensePresenterInterface: PresenterInterface {
+    func presentPortofolio()
+    func handleChartSelection(index: Int)
 }
 
 protocol ExpenseInteractorInterface: InteractorInterface {
+    func fetchPortofolio(completion: @escaping (Portofolio) -> Void)
 }

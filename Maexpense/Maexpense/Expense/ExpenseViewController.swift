@@ -8,9 +8,12 @@
 //
 
 import UIKit
+import DGCharts
 
 final class ExpenseViewController: UIViewController {
 
+    @IBOutlet weak var pcv_monthly: PieChartView!
+    @IBOutlet weak var lcv_annualy: LineChartView!
     // MARK: - Public properties -
 
     var presenter: ExpensePresenterInterface!
@@ -19,11 +22,88 @@ final class ExpenseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.presentPortofolio()
+        pcv_monthly.delegate = self
     }
 
 }
 
 // MARK: - Extensions -
 
-extension ExpenseViewController: ExpenseViewInterface {
+extension ExpenseViewController: ExpenseViewInterface, ChartViewDelegate {
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        let entryIndex = Int(highlight.x)
+        presenter.handleChartSelection(index: entryIndex)
+    }
+    func displayDonutChart(data: [MonthPortoDatum]) {
+        var entries: [PieChartDataEntry] = []
+        for entry in data {
+            if let value = Double(entry.percentage ?? "0") {
+                let pieChartDataEntry = PieChartDataEntry(value: value, label: entry.label)
+                entries.append(pieChartDataEntry)
+            }
+        }
+
+        let dataSet = PieChartDataSet(entries: entries, label: "")
+        dataSet.colors = ChartColorTemplates.pastel()
+        dataSet.selectionShift = 8
+        
+        let chartData = PieChartData(dataSet: dataSet)
+        
+        pcv_monthly.data = chartData
+        pcv_monthly.holeRadiusPercent = 0.3
+        pcv_monthly.transparentCircleRadiusPercent = 0.4
+        pcv_monthly.drawEntryLabelsEnabled = false
+
+        let format = NumberFormatter()
+        format.maximumFractionDigits = 1
+        format.numberStyle = .percent
+        format.multiplier = 1.0
+        let formatter = DefaultValueFormatter(formatter: format)
+        chartData.setValueFormatter(formatter)
+        chartData.setValueFont(UIFont(name: "Roboto-Regular", size: 10)!)
+    }
+    
+    func displayLineChart(data: [Int]) {
+        var entries: [ChartDataEntry] = []
+        for (index, value) in data.enumerated() {
+            let chartDataEntry = ChartDataEntry(x: Double(index), y: Double(value))
+            entries.append(chartDataEntry)
+        }
+
+        let dataSet = LineChartDataSet(entries: entries)
+        dataSet.mode = .linear
+        
+        dataSet.drawCircleHoleEnabled = false
+        dataSet.circleRadius = 4
+        dataSet.circleColors = [UIColor.darkblue]
+        dataSet.colors = [UIColor.darkblue]
+        dataSet.drawValuesEnabled = false
+        let chartData = LineChartData(dataSet: dataSet)
+        
+        // X AXIS
+        let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        lcv_annualy.xAxis.valueFormatter = IndexAxisValueFormatter(values: months)
+        lcv_annualy.xAxis.granularity = 1
+        lcv_annualy.xAxis.labelCount = months.count
+        lcv_annualy.xAxis.labelPosition = .bottom
+        lcv_annualy.xAxis.drawGridLinesEnabled = false
+        lcv_annualy.xAxis.avoidFirstLastClippingEnabled = false
+        lcv_annualy.xAxis.axisMinimum = -0.4 // Adjust the value to set the desired spacing for the first label
+        lcv_annualy.xAxis.axisMaximum = Double(data.count - 1) + 0.4
+        
+        
+        // LEFT AXIS
+        lcv_annualy.leftAxis.valueFormatter = DefaultAxisValueFormatter(decimals: 0)
+        
+        // RIGHT AXIS
+        lcv_annualy.rightAxis.valueFormatter = DefaultAxisValueFormatter(decimals: 0)
+        lcv_annualy.rightAxis.drawAxisLineEnabled = false
+        lcv_annualy.rightAxis.drawLabelsEnabled = false
+        
+        lcv_annualy.legend.enabled = false
+
+        lcv_annualy.data = chartData
+    }
+    
 }
