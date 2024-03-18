@@ -13,7 +13,7 @@ final class DetailViewController: UIViewController {
     
     var transactionList: [MonthDetailDatum] = []
 
-    @IBOutlet weak var lb_expesetype: UILabel!
+    @IBOutlet weak var lb_expensetype: UILabel!
     @IBOutlet weak var lb_percentage: UILabel!
     @IBOutlet weak var lb_totalexpense: UILabel!
     @IBOutlet weak var cv_transactionlist: UICollectionView!
@@ -39,7 +39,7 @@ final class DetailViewController: UIViewController {
 
 extension DetailViewController: DetailViewInterface {
     func displayMonthData(data: MonthPortoDatum) {
-        lb_expesetype.text = data.label
+        lb_expensetype.text = data.label
         lb_percentage.text = (data.percentage ?? "0") + "%"
         let totalexpense = data.data?.reduce(0) { $0 + ($1.nominal ?? 0) }
         lb_totalexpense.text = MoneyUtils.toRupiah(totalexpense ?? 0)

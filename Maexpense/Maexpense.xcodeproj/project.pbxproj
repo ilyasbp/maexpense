@@ -22,10 +22,11 @@
 		E96E10962BA790CF009F670D /* TransactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E96E10942BA790CF009F670D /* TransactionCell.xib */; };
 		E96E10992BA79350009F670D /* ExtUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96E10982BA79350009F670D /* ExtUIView.swift */; };
 		E96E109C2BA7989C009F670D /* MoneyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96E109B2BA7989C009F670D /* MoneyUtils.swift */; };
+		E96E109E2BA7ECAB009F670D /* MainScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96E109D2BA7ECAB009F670D /* MainScreenTests.swift */; };
+		E96E10A02BA7F27D009F670D /* DetailScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96E109F2BA7F27D009F670D /* DetailScreenTests.swift */; };
 		E99E948F2BA7304C0029DF4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99E948E2BA7304C0029DF4C /* AppDelegate.swift */; };
 		E99E94982BA7304C0029DF4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E99E94972BA7304C0029DF4C /* Assets.xcassets */; };
 		E99E949B2BA7304C0029DF4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E99E94992BA7304C0029DF4C /* LaunchScreen.storyboard */; };
-		E99E94A62BA7304D0029DF4C /* MaexpenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99E94A52BA7304D0029DF4C /* MaexpenseTests.swift */; };
 		E99E94B02BA7304D0029DF4C /* MaexpenseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99E94AF2BA7304D0029DF4C /* MaexpenseUITests.swift */; };
 		E99E94B22BA7304D0029DF4C /* MaexpenseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99E94B12BA7304D0029DF4C /* MaexpenseUITestsLaunchTests.swift */; };
 		E99E94C52BA733690029DF4C /* ExpenseInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99E94BF2BA733690029DF4C /* ExpenseInterfaces.swift */; };
@@ -113,13 +114,14 @@
 		E96E10942BA790CF009F670D /* TransactionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionCell.xib; sourceTree = "<group>"; };
 		E96E10982BA79350009F670D /* ExtUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtUIView.swift; sourceTree = "<group>"; };
 		E96E109B2BA7989C009F670D /* MoneyUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyUtils.swift; sourceTree = "<group>"; };
+		E96E109D2BA7ECAB009F670D /* MainScreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenTests.swift; sourceTree = "<group>"; };
+		E96E109F2BA7F27D009F670D /* DetailScreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScreenTests.swift; sourceTree = "<group>"; };
 		E99E948B2BA7304C0029DF4C /* Maexpense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maexpense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E99E948E2BA7304C0029DF4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E99E94972BA7304C0029DF4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E99E949A2BA7304C0029DF4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E99E949C2BA7304C0029DF4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E99E94A12BA7304D0029DF4C /* MaexpenseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaexpenseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E99E94A52BA7304D0029DF4C /* MaexpenseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaexpenseTests.swift; sourceTree = "<group>"; };
 		E99E94AB2BA7304D0029DF4C /* MaexpenseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaexpenseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E99E94AF2BA7304D0029DF4C /* MaexpenseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaexpenseUITests.swift; sourceTree = "<group>"; };
 		E99E94B12BA7304D0029DF4C /* MaexpenseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaexpenseUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -311,7 +313,8 @@
 		E99E94A42BA7304D0029DF4C /* MaexpenseTests */ = {
 			isa = PBXGroup;
 			children = (
-				E99E94A52BA7304D0029DF4C /* MaexpenseTests.swift */,
+				E96E109D2BA7ECAB009F670D /* MainScreenTests.swift */,
+				E96E109F2BA7F27D009F670D /* DetailScreenTests.swift */,
 			);
 			path = MaexpenseTests;
 			sourceTree = "<group>";
@@ -708,7 +711,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E99E94A62BA7304D0029DF4C /* MaexpenseTests.swift in Sources */,
+				E96E10A02BA7F27D009F670D /* DetailScreenTests.swift in Sources */,
+				E96E109E2BA7ECAB009F670D /* MainScreenTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,13 +26,13 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="22-08-2005" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tmu-dY-Ube">
-                        <rect key="frame" x="19.999999999999996" y="18.333333333333332" width="60.666666666666657" height="13.999999999999996"/>
+                        <rect key="frame" x="176.33333333333334" y="18.333333333333332" width="60.666666666666657" height="13.999999999999996"/>
                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                         <color key="textColor" name="darkblue"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rp 1000.000.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mr3-qu-GJu">
-                        <rect key="frame" x="100.66666666666667" y="14.000000000000002" width="136.33333333333331" height="22.666666666666671"/>
+                        <rect key="frame" x="20" y="14.000000000000002" width="136.33333333333334" height="22.666666666666671"/>
                         <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
                         <color key="textColor" name="darkblue"/>
                         <nil key="highlightedColor"/>
@@ -43,9 +43,9 @@
             <color key="backgroundColor" name="bluewhite"/>
             <constraints>
                 <constraint firstItem="mr3-qu-GJu" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="14" id="6dV-iG-fBm"/>
-                <constraint firstItem="mr3-qu-GJu" firstAttribute="leading" secondItem="Tmu-dY-Ube" secondAttribute="trailing" constant="20" id="Fe6-PA-xKc"/>
-                <constraint firstAttribute="trailing" secondItem="mr3-qu-GJu" secondAttribute="trailing" constant="20" id="SEC-JD-7IF"/>
-                <constraint firstItem="Tmu-dY-Ube" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="bCr-w8-4xJ"/>
+                <constraint firstAttribute="trailing" secondItem="Tmu-dY-Ube" secondAttribute="trailing" constant="20" id="GGE-io-hn4"/>
+                <constraint firstItem="mr3-qu-GJu" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="VAH-Y2-X8x"/>
+                <constraint firstItem="Tmu-dY-Ube" firstAttribute="leading" secondItem="mr3-qu-GJu" secondAttribute="trailing" constant="20" id="W6m-MB-xmI"/>
                 <constraint firstItem="Tmu-dY-Ube" firstAttribute="centerY" secondItem="mr3-qu-GJu" secondAttribute="centerY" id="lol-cS-GaN"/>
             </constraints>
             <size key="customSize" width="257" height="52"/>
