@@ -9,6 +9,7 @@
 
 import UIKit
 import DGCharts
+import Toast_Swift
 
 final class ExpenseViewController: UIViewController {
 
@@ -35,6 +36,7 @@ extension ExpenseViewController: ExpenseViewInterface, ChartViewDelegate {
         let entryIndex = Int(highlight.x)
         presenter.handleChartSelection(index: entryIndex)
     }
+    
     func displayDonutChart(data: [MonthPortoDatum]) {
         var entries: [PieChartDataEntry] = []
         for entry in data {
@@ -106,4 +108,7 @@ extension ExpenseViewController: ExpenseViewInterface, ChartViewDelegate {
         lcv_annually.data = chartData
     }
     
+    func displayError(errorMsg: String) {
+        self.view.makeToast(errorMsg)
+    }
 }

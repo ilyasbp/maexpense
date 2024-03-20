@@ -1,2 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-Maexpense/Pods-Maexpense-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/DGCharts/DGCharts.framework
+${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework

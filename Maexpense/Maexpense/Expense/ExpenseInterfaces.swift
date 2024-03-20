@@ -8,6 +8,7 @@
 //
 
 import UIKit
+import Alamofire
 
 protocol ExpenseWireframeInterface: WireframeInterface {
     func goToDetail(data: MonthPortoDatum)
@@ -16,6 +17,7 @@ protocol ExpenseWireframeInterface: WireframeInterface {
 protocol ExpenseViewInterface: ViewInterface {
     func displayDonutChart(data: [MonthPortoDatum])
     func displayLineChart(data: [Int])
+    func displayError(errorMsg: String)
 }
 
 protocol ExpensePresenterInterface: PresenterInterface {
@@ -25,4 +27,5 @@ protocol ExpensePresenterInterface: PresenterInterface {
 
 protocol ExpenseInteractorInterface: InteractorInterface {
     func fetchPortofolio(completion: @escaping (Portofolio) -> Void)
+    func fetchPortofolioService(completion: @escaping (AFResult<Portofolio>) -> Void)
 }

@@ -8,6 +8,7 @@
 //
 
 import Foundation
+import Alamofire
 
 final class ExpenseInteractor {
 }
@@ -25,6 +26,16 @@ extension ExpenseInteractor: ExpenseInteractorInterface {
             catch {
                 print("Error decoding JSON:", error)
             }
+        }
+    }
+    
+    func fetchPortofolioService(completion: @escaping (AFResult<Portofolio>) -> Void) {
+        let endpoint = "https://demo0726494.mockable.io/userPortofolio"
+
+        AF.request(endpoint, method: .get)
+            .validate()
+            .responseDecodable(of: Portofolio.self) { response in
+                completion(response.result)
         }
     }
 }

@@ -41,5 +41,19 @@ extension ExpensePresenter: ExpensePresenterInterface {
             self.view.displayLineChart(data: portofolio.yearPorto?.data?.month ?? [])
             self.monthPortofolio = portofolio.monthPorto?.data ?? []
         }
+        
+        interactor.fetchPortofolioService() { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                print("Response: \(response)")
+                self.view.displayDonutChart(data: response.monthPorto?.data ?? [])
+                self.view.displayLineChart(data: response.yearPorto?.data?.month ?? [])
+                self.monthPortofolio = response.monthPorto?.data ?? []
+            case .failure(let error):
+                self.view.displayError(errorMsg: error.errorDescription ?? "Terjadi kesalahan server")
+            }
+            
+        }
     }
 }

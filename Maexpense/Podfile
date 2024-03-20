@@ -7,6 +7,8 @@ target 'Maexpense' do
 
   # Pods for Maexpense
   pod 'DGCharts'
+  pod 'Alamofire', '~> 5.2'
+  pod 'Toast-Swift'
 
   target 'MaexpenseTests' do
     inherit! :search_paths
